@@ -1,0 +1,39 @@
+{
+  "name": "obj-store",
+  "version": "1.0.0",
+  "description": "An observable array or object datastore.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gummesson/store.git"
+  },
+  "keywords": [
+    "array",
+    "object",
+    "data",
+    "store",
+    "datastore"
+  ],
+  "author": "Ellen Gummesson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gummesson/store/issues"
+  },
+  "homepage": "https://github.com/gummesson/store",
+  "dependencies": {
+    "evmit": "^1.0.2",
+    "minherits": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "covert": "^1.0.1",
+    "smokestack": "^3.2.2",
+    "tap-closer": "^1.0.0",
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node test/",
+    "test:browser": "browserify test/ | tap-closer | smokestack",
+    "test:cover": "covert test/"
+  }
+}
