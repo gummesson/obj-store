@@ -57,9 +57,12 @@ Store.prototype.set = function(key, val) {
  */
 
 Store.prototype.get = function(key) {
-  if (arguments.length)
-    return this._data[key]
-  return this._data
+  var args = arguments.length
+  var data = args
+    ? this._data[key]
+    : this._data
+  if (args) this.emit('get', key, data)
+  return data
 }
 
 /**

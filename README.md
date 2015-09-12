@@ -28,6 +28,10 @@ store.on('set', function(key, val) {
 
 store.set('baz', 'qux')
 
+store.on('get', function(key, val) {
+  console.log(key, val) // => "foo" "bar"
+})
+
 store.get('foo') // => "bar"
 store.get()      // => { foo: 'bar', baz: 'qux' }
 
@@ -55,6 +59,10 @@ store.on('set', function(key, val) {
 })
 
 store.set('bar')
+
+store.on('get', function(key, val) {
+  console.log(key, val) // => 0 "foo"
+})
 
 store.get(0) // => "foo"
 store.get()  // => ['foo', 'bar']

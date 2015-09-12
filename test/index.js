@@ -32,6 +32,13 @@ test('Store(obj)', function(t) {
 
   t.test('.get([key])', function(assert) {
     var store = new Store({ foo: 'bar', baz: 'qux' })
+
+    store.on('get', function(key, val) {
+      assert.pass('should emit')
+      assert.equal(key, 'foo')
+      assert.equal(val, 'bar')
+    })
+
     assert.deepEqual(store.get(), { foo: 'bar', baz: 'qux' })
     assert.deepEqual(store.get('foo'), 'bar')
     assert.end()
@@ -81,6 +88,13 @@ test('Store(arr)', function(t) {
 
   t.test('.get([key])', function(assert) {
     var store = new Store(['foo', 'bar'])
+
+    store.on('get', function(key, val) {
+      assert.pass('should emit')
+      assert.equal(key, 0)
+      assert.equal(val, 'foo')
+    })
+
     assert.deepEqual(store.get(), ['foo', 'bar'])
     assert.equal(store.get(0), 'foo')
     assert.end()
