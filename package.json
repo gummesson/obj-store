@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gummesson/store.git"
+    "url": "https://github.com/gummesson/obj-store.git"
   },
   "keywords": [
     "array",
@@ -17,9 +17,9 @@
   "author": "Ellen Gummesson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gummesson/store/issues"
+    "url": "https://github.com/gummesson/obj-store/issues"
   },
-  "homepage": "https://github.com/gummesson/store",
+  "homepage": "https://github.com/gummesson/obj-store",
   "dependencies": {
     "evmit": "^1.0.2",
     "minherits": "^1.0.0"
