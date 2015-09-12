@@ -66,7 +66,7 @@ test('Store(arr)', function(t) {
   t.test('.set(val)', function(assert) {
     store.on('set', function(key, val) {
       assert.pass('should emit')
-      assert.equal(key, '1')
+      assert.equal(key, 1)
       assert.equal(val, 'bar')
     })
     store.set('bar')
@@ -75,18 +75,18 @@ test('Store(arr)', function(t) {
 
   t.test('.get([key])', function(assert) {
     assert.deepEqual(store.get(), ['foo', 'bar'])
-    assert.equal(store.get('0'), 'foo')
+    assert.equal(store.get(0), 'foo')
     assert.end()
   })
 
   t.test('.del(key)', function(assert) {
     store.on('del', function(key, val) {
       assert.pass('should emit')
-      assert.equal(key, '0')
+      assert.equal(key, 0)
       assert.equal(val, 'foo')
     })
-    store.del('0')
-    assert.equal(store.get('0'), 'bar')
+    store.del(0)
+    assert.equal(store.get(0), 'bar')
     assert.deepEqual(store.get(), ['bar'])
     assert.end()
   })

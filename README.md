@@ -51,19 +51,19 @@ var Store = require('obj-store')
 var store = new Store(['foo'])
 
 store.on('set', function(key, val) {
-  console.log(key, val) // => "1" "bar"
+  console.log(key, val) // => 1 "bar"
 })
 
 store.set('bar')
 
-store.get('0') // => "foo"
-store.get()    // => ['foo', 'bar']
+store.get(0) // => "foo"
+store.get()  // => ['foo', 'bar']
 
 store.on('del', function(key, val) {
-  console.log(key, val) // => "0" "foo"
+  console.log(key, val) // => 0 "foo"
 })
 
-store.del('0')
+store.del(0)
 
 store.on('close', function(data) {
   console.log(data) // => ['bar']

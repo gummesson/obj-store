@@ -38,7 +38,7 @@ inherits(Store, Evmit)
 Store.prototype.set = function(key, val) {
   if (this._type === 'array') {
     val = key
-    key = String(this._data.length)
+    key = this._data.length
     this._data.push(val)
   } else {
     this._data[key] = val
@@ -57,7 +57,8 @@ Store.prototype.set = function(key, val) {
  */
 
 Store.prototype.get = function(key) {
-  if (key) return this._data[key]
+  if (arguments.length)
+    return this._data[key]
   return this._data
 }
 
