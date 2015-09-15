@@ -6,6 +6,12 @@ var Evmit = require('evmit')
 var inherits = require('minherits')
 
 /**
+ * Exports
+ */
+
+module.exports = Store
+
+/**
  * Initialize `Store`.
  *
  * @constructor
@@ -84,9 +90,3 @@ Store.prototype.close = function() {
   this.emit('close', value)
   return value
 }
-
-/**
- * Exports
- */
-
-module.exports = Store
