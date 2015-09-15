@@ -32,7 +32,7 @@ test('Store(obj)', function(t) {
     assert.end()
   })
 
-  t.test('.get([key])', function(assert) {
+  t.test('.get(key?)', function(assert) {
     var store = new Store({ foo: 'bar', baz: 'qux' })
 
     store.on('get', function(key, value) {
@@ -101,7 +101,7 @@ test('Store(arr)', function(t) {
     assert.end()
   })
 
-  t.test('.get([key])', function(assert) {
+  t.test('.get(key?)', function(assert) {
     var store = new Store(['foo', 'bar'])
 
     store.on('get', function(key, value) {
