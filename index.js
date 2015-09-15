@@ -27,19 +27,19 @@ inherits(Store, Evmit)
  * Set an item.
  *
  * @param {String} key
- * @param {String} [val]
+ * @param {String} [value]
  * @return {this}
  */
 
-Store.prototype.set = function(key, val) {
+Store.prototype.set = function(key, value) {
   if (this._type === 'array') {
-    val = key
+    value = key
     key = this._data.length
-    this._data.push(val)
+    this._data.push(value)
   } else {
-    this._data[key] = val
+    this._data[key] = value
   }
-  this.emit('set', key, val)
+  this.emit('set', key, value)
   return this
 }
 
@@ -52,11 +52,11 @@ Store.prototype.set = function(key, val) {
 
 Store.prototype.get = function(key) {
   var args = arguments.length
-  var data = args
+  var value = args
     ? this._data[key]
     : this._data
-  if (args) this.emit('get', key, data)
-  return data
+  if (args) this.emit('get', key, value)
+  return value
 }
 
 /**
@@ -67,13 +67,13 @@ Store.prototype.get = function(key) {
  */
 
 Store.prototype.del = function(key) {
-  var val = this._data[key]
+  var value = this._data[key]
   if (this._type === 'array') {
     this._data.splice(key, 1)
   } else {
     delete this._data[key]
   }
-  this.emit('del', key, val)
+  this.emit('del', key, value)
   return this
 }
 
@@ -82,9 +82,9 @@ Store.prototype.del = function(key) {
  */
 
 Store.prototype.close = function() {
-  var data = this._data
+  var value = this._data
   delete this._data
-  this.emit('close', data)
+  this.emit('close', value)
 }
 
 /**

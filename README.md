@@ -22,27 +22,27 @@ var store = new Store({
   foo: 'bar'
 })
 
-store.on('set', function(key, val) {
-  console.log(key, val) // => "baz" "qux"
+store.on('set', function(key, value) {
+  console.log(key, value) // => "baz" "qux"
 })
 
 store.set('baz', 'qux')
 
-store.on('get', function(key, val) {
-  console.log(key, val) // => "foo" "bar"
+store.on('get', function(key, value) {
+  console.log(key, value) // => "foo" "bar"
 })
 
 store.get('foo') // => "bar"
 store.get()      // => { foo: 'bar', baz: 'qux' }
 
-store.on('del', function(key, val) {
-  console.log(key, val) // => "foo" "bar"
+store.on('del', function(key, value) {
+  console.log(key, value) // => "foo" "bar"
 })
 
 store.del('foo')
 
-store.on('close', function(data) {
-  console.log(data) // => { baz: 'qux' }
+store.on('close', function(value) {
+  console.log(value) // => { baz: 'qux' }
 })
 
 store.close()
@@ -54,27 +54,27 @@ store.close()
 var Store = require('obj-store')
 var store = new Store(['foo'])
 
-store.on('set', function(key, val) {
-  console.log(key, val) // => 1 "bar"
+store.on('set', function(key, value) {
+  console.log(key, value) // => 1 "bar"
 })
 
 store.set('bar')
 
-store.on('get', function(key, val) {
-  console.log(key, val) // => 0 "foo"
+store.on('get', function(key, value) {
+  console.log(key, value) // => 0 "foo"
 })
 
 store.get(0) // => "foo"
 store.get()  // => ['foo', 'bar']
 
-store.on('del', function(key, val) {
-  console.log(key, val) // => 0 "foo"
+store.on('del', function(key, value) {
+  console.log(key, value) // => 0 "foo"
 })
 
 store.del(0)
 
-store.on('close', function(data) {
-  console.log(data) // => ['bar']
+store.on('close', function(value) {
+  console.log(value) // => ['bar']
 })
 
 store.close()
