@@ -26,6 +26,11 @@ test('Store(obj)', function(t) {
       assert.equal(value, 'qux')
     })
 
+    store.on('set:baz', function(value) {
+      assert.pass('should emit')
+      assert.equal(value, 'qux')
+    })
+
     var value = store.set('baz', 'qux')
 
     assert.equal(value, 'qux')
@@ -38,6 +43,11 @@ test('Store(obj)', function(t) {
     store.on('get', function(key, value) {
       assert.pass('should emit')
       assert.equal(key, 'foo')
+      assert.equal(value, 'bar')
+    })
+
+    store.on('get:foo', function(value) {
+      assert.pass('should emit')
       assert.equal(value, 'bar')
     })
 
@@ -55,6 +65,11 @@ test('Store(obj)', function(t) {
     store.on('del', function(key, value) {
       assert.pass('should emit')
       assert.equal(key, 'foo')
+      assert.equal(value, 'bar')
+    })
+
+    store.on('del:foo', function(value) {
+      assert.pass('should emit')
       assert.equal(value, 'bar')
     })
 
@@ -95,6 +110,11 @@ test('Store(arr)', function(t) {
       assert.equal(value, 'bar')
     })
 
+    store.on('set:1', function(value) {
+      assert.pass('should emit')
+      assert.equal(value, 'bar')
+    })
+
     var value = store.set('bar')
 
     assert.equal(value, 'bar')
@@ -107,6 +127,11 @@ test('Store(arr)', function(t) {
     store.on('get', function(key, value) {
       assert.pass('should emit')
       assert.equal(key, 0)
+      assert.equal(value, 'foo')
+    })
+
+    store.on('get:0', function(value) {
+      assert.pass('should emit')
       assert.equal(value, 'foo')
     })
 
@@ -124,6 +149,11 @@ test('Store(arr)', function(t) {
     store.on('del', function(key, value) {
       assert.pass('should emit')
       assert.equal(key, 0)
+      assert.equal(value, 'foo')
+    })
+
+    store.on('del:0', function(value) {
+      assert.pass('should emit')
       assert.equal(value, 'foo')
     })
 

@@ -43,6 +43,7 @@ Store.prototype.set = function(key, value) {
     this._data[key] = value
   }
   this.emit('set', key, value)
+  this.emit('set:' + key, value)
   return value
 }
 
@@ -56,7 +57,10 @@ Store.prototype.set = function(key, value) {
 Store.prototype.get = function(key) {
   var args = arguments.length
   var value = args ? this._data[key] : this._data
-  if (args) this.emit('get', key, value)
+  if (args) {
+    this.emit('get', key, value)
+    this.emit('get:' + key, value)
+  }
   return value
 }
 
@@ -75,6 +79,7 @@ Store.prototype.del = function(key) {
     delete this._data[key]
   }
   this.emit('del', key, value)
+  this.emit('del:' + key, value)
   return value
 }
 
