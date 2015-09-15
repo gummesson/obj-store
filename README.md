@@ -33,7 +33,7 @@ store.on('get', function(key, value) {
 })
 
 store.get('foo') // => "bar"
-store.get()      // => { foo: 'bar', baz: 'qux' }
+store.get()      // => { foo: "bar", baz: "qux" }
 
 store.on('del', function(key, value) {
   console.log(key, value) // => "foo" "bar"
@@ -42,7 +42,7 @@ store.on('del', function(key, value) {
 store.del('foo')
 
 store.on('close', function(value) {
-  console.log(value) // => { baz: 'qux' }
+  console.log(value) // => { baz: "qux" }
 })
 
 store.close()
@@ -65,7 +65,7 @@ store.on('get', function(key, value) {
 })
 
 store.get(0) // => "foo"
-store.get()  // => ['foo', 'bar']
+store.get()  // => ["foo", "bar"]
 
 store.on('del', function(key, value) {
   console.log(key, value) // => 0 "foo"
@@ -74,7 +74,7 @@ store.on('del', function(key, value) {
 store.del(0)
 
 store.on('close', function(value) {
-  console.log(value) // => ['bar']
+  console.log(value) // => ["bar"]
 })
 
 store.close()
