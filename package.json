@@ -1,6 +1,6 @@
 {
   "name": "obj-store",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "An observable array or object datastore.",
   "main": "index.js",
   "repository": {
