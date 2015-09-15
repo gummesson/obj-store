@@ -26,7 +26,9 @@ test('Store(obj)', function(t) {
       assert.equal(value, 'qux')
     })
 
-    store.set('baz', 'qux')
+    var value = store.set('baz', 'qux')
+
+    assert.equal(value, 'qux')
     assert.end()
   })
 
@@ -39,8 +41,11 @@ test('Store(obj)', function(t) {
       assert.equal(value, 'bar')
     })
 
-    assert.deepEqual(store.get(), { foo: 'bar', baz: 'qux' })
-    assert.deepEqual(store.get('foo'), 'bar')
+    var values = store.get()
+    var value = store.get('foo')
+
+    assert.deepEqual(values, { foo: 'bar', baz: 'qux' })
+    assert.deepEqual(value, 'bar')
     assert.end()
   })
 
@@ -53,9 +58,13 @@ test('Store(obj)', function(t) {
       assert.equal(value, 'bar')
     })
 
-    store.del('foo')
-    assert.equal(store.get('foo'), undefined)
-    assert.deepEqual(store.get(), { baz: 'qux' })
+    var deleted = store.del('foo')
+    var values = store.get()
+    var value = store.get('foo')
+
+    assert.equal(deleted, 'bar')
+    assert.deepEqual(values, { baz: 'qux' })
+    assert.equal(value, undefined)
     assert.end()
   })
 
@@ -66,8 +75,12 @@ test('Store(obj)', function(t) {
       assert.pass('should emit')
       assert.deepEqual(value, { foo: 'bar' })
     })
-    store.close()
-    assert.equal(store.get(), undefined)
+
+    var closed = store.close()
+    var values = store.get()
+
+    assert.deepEqual(closed, { foo: 'bar' })
+    assert.equal(values, undefined)
     assert.end()
   })
 })
@@ -82,7 +95,9 @@ test('Store(arr)', function(t) {
       assert.equal(value, 'bar')
     })
 
-    store.set('bar')
+    var value = store.set('bar')
+
+    assert.equal(value, 'bar')
     assert.end()
   })
 
@@ -95,8 +110,11 @@ test('Store(arr)', function(t) {
       assert.equal(value, 'foo')
     })
 
-    assert.deepEqual(store.get(), ['foo', 'bar'])
-    assert.equal(store.get(0), 'foo')
+    var values = store.get()
+    var value = store.get(0)
+
+    assert.deepEqual(values, ['foo', 'bar'])
+    assert.equal(value, 'foo')
     assert.end()
   })
 
@@ -109,9 +127,13 @@ test('Store(arr)', function(t) {
       assert.equal(value, 'foo')
     })
 
-    store.del(0)
-    assert.equal(store.get(0), 'bar')
-    assert.deepEqual(store.get(), ['bar'])
+    var deleted = store.del(0)
+    var values = store.get()
+    var value = store.get(0)
+
+    assert.equal(deleted, 'foo')
+    assert.deepEqual(values, ['bar'])
+    assert.equal(value, 'bar')
     assert.end()
   })
 
@@ -123,8 +145,11 @@ test('Store(arr)', function(t) {
       assert.deepEqual(value, ['foo'])
     })
 
-    store.close()
-    assert.equal(store.get(), undefined)
+    var closed = store.close()
+    var values = store.get()
+
+    assert.deepEqual(closed, ['foo'])
+    assert.equal(values, undefined)
     assert.end()
   })
 })

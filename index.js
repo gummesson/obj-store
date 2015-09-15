@@ -25,7 +25,7 @@ inherits(Store, Evmit)
  *
  * @param {String} key
  * @param {String} [value]
- * @return {this}
+ * @return {Mixed}
  */
 
 Store.prototype.set = function(key, value) {
@@ -37,7 +37,7 @@ Store.prototype.set = function(key, value) {
     this._data[key] = value
   }
   this.emit('set', key, value)
-  return this
+  return value
 }
 
 /**
@@ -49,9 +49,7 @@ Store.prototype.set = function(key, value) {
 
 Store.prototype.get = function(key) {
   var args = arguments.length
-  var value = args
-    ? this._data[key]
-    : this._data
+  var value = args ? this._data[key] : this._data
   if (args) this.emit('get', key, value)
   return value
 }
@@ -60,7 +58,7 @@ Store.prototype.get = function(key) {
  * Remove an item.
  *
  * @param {Number|String} key
- * @return {this}
+ * @return {Mixed}
  */
 
 Store.prototype.del = function(key) {
@@ -71,17 +69,20 @@ Store.prototype.del = function(key) {
     delete this._data[key]
   }
   this.emit('del', key, value)
-  return this
+  return value
 }
 
 /**
  * Close `Store`.
+ *
+ * @return {Array|Object}
  */
 
 Store.prototype.close = function() {
   var value = this._data
   delete this._data
   this.emit('close', value)
+  return value
 }
 
 /**

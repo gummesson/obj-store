@@ -18,6 +18,7 @@ npm install obj-store
 
 ``` javascript
 var Store = require('obj-store')
+
 var store = new Store({
   foo: 'bar'
 })
@@ -26,7 +27,7 @@ store.on('set', function(key, value) {
   console.log(key, value) // => "baz" "qux"
 })
 
-store.set('baz', 'qux')
+store.set('baz', 'qux') // => "qux"
 
 store.on('get', function(key, value) {
   console.log(key, value) // => "foo" "bar"
@@ -39,26 +40,27 @@ store.on('del', function(key, value) {
   console.log(key, value) // => "foo" "bar"
 })
 
-store.del('foo')
+store.del('foo') // => "bar"
 
 store.on('close', function(value) {
   console.log(value) // => { baz: "qux" }
 })
 
-store.close()
+store.close() // => { baz: "qux" }
 ```
 
 ### Array
 
 ``` javascript
 var Store = require('obj-store')
+
 var store = new Store(['foo'])
 
 store.on('set', function(key, value) {
   console.log(key, value) // => 1 "bar"
 })
 
-store.set('bar')
+store.set('bar') // => "bar"
 
 store.on('get', function(key, value) {
   console.log(key, value) // => 0 "foo"
@@ -71,13 +73,13 @@ store.on('del', function(key, value) {
   console.log(key, value) // => 0 "foo"
 })
 
-store.del(0)
+store.del(0) // => "foo"
 
 store.on('close', function(value) {
   console.log(value) // => ["bar"]
 })
 
-store.close()
+store.close() // => ["baz"]
 ```
 
 [npm-img]: https://img.shields.io/npm/v/obj-store.svg?style=flat-square
