@@ -2,17 +2,15 @@
  * Dependencies
  */
 
-var isArray  = Array.isArray
-var Evmit    = require('evmit')
+var isArray = Array.isArray
+var Evmit = require('evmit')
 var inherits = require('minherits')
 
 /**
  * Initialize `Store`.
  *
  * @constructor
- * @param {array|object} [obj]
- *
- * @api public
+ * @param {Array|Object} [obj]
  */
 
 function Store(obj) {
@@ -28,11 +26,9 @@ inherits(Store, Evmit)
 /**
  * Set an item.
  *
- * @param  {string} key
- * @param  {string} [val]
+ * @param {String} key
+ * @param {String} [val]
  * @return {this}
- *
- * @api public
  */
 
 Store.prototype.set = function(key, val) {
@@ -50,10 +46,8 @@ Store.prototype.set = function(key, val) {
 /**
  * Get either an item or all items.
  *
- * @param  {string} [key]
- * @return {object|string}
- *
- * @api public
+ * @param {String} [key]
+ * @return {Mixed}
  */
 
 Store.prototype.get = function(key) {
@@ -68,10 +62,8 @@ Store.prototype.get = function(key) {
 /**
  * Remove an item.
  *
- * @param  {string} key
+ * @param {Number|String} key
  * @return {this}
- *
- * @api public
  */
 
 Store.prototype.del = function(key) {
@@ -87,10 +79,6 @@ Store.prototype.del = function(key) {
 
 /**
  * Close `Store`.
- *
- * @return {void}
- *
- * @api public
  */
 
 Store.prototype.close = function() {
