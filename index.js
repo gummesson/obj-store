@@ -2,7 +2,6 @@
  * Dependencies
  */
 
-var isArray = Array.isArray
 var Evmit = require('evmit')
 var inherits = require('minherits')
 
@@ -15,9 +14,7 @@ var inherits = require('minherits')
 
 function Store(obj) {
   this._data = obj || {}
-  this._type = isArray(obj)
-    ? 'array'
-    : 'object'
+  this._list = Array.isArray(obj)
   Evmit.call(this)
 }
 
@@ -32,7 +29,7 @@ inherits(Store, Evmit)
  */
 
 Store.prototype.set = function(key, value) {
-  if (this._type === 'array') {
+  if (this._list) {
     value = key
     key = this._data.length
     this._data.push(value)
@@ -68,7 +65,7 @@ Store.prototype.get = function(key) {
 
 Store.prototype.del = function(key) {
   var value = this._data[key]
-  if (this._type === 'array') {
+  if (this._list) {
     this._data.splice(key, 1)
   } else {
     delete this._data[key]
